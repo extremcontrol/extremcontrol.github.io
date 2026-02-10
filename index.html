@@ -182,16 +182,13 @@
     <nav class="tabs is-boxed is-fullwidth is-size-5">
       <ul>
         <li><a href="#extremcontrol">Extremity Control</a></li>
-        <li><a href="#task-tracking">Velocity Feedforward Control</a></li>
+        <li><a href="#feedforward">Velocity Feedforward Control</a></li>
         <li><a href="#latency">Latency Estimation</a></li>
         <li><a href="#hardware">Hardware & System</a></li>
       </ul>
     </nav>
   </div>
 </section>
-
-
-
 
 <section class="section is-medium" id="overview">
   <div class="container is-max-desktop">
@@ -228,52 +225,6 @@
     </div>
   </div>
 </section>
-
-
-<!-- <section class="section" id="video">
-  <div class="container is-max-desktop">
-    <h2 class="title is-1 has-text-centered is-size-4-mobile">Technical Summary Video</h2>
-    <iframe width="100%" style="aspect-ratio: 16 / 9;" src="
-      https://www.youtube.com/embed/4Bp0q3xHTxE?si=ocAPm8KVAz-RZK59" title="UMI on Legs Technical Summary Video"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  </div>
-</section> -->
-
-<section class="section is-small" id="extremcontrol">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-
-        <h2 class="title is-1 has-text-centered is-size-4-mobile">Whole-body Control without Whole-body Retargeting</h2>
-        <div class="content">
-          <p>
-            Robots are the reason why it's been hard to collect a lot of robot data.
-            They are expensive 💸, tricky to control for dexterous tasks 🎾, and can punch a hole in the wall (or
-            itself) if you're not
-            careful ☠️.
-            What if we could collect robot data without robots?
-          </p>
-        </div>
-
-        <div class="content">
-          <p>
-            <a href="https://umi-gripper.github.io/">UMI</a> is a handheld gripper with a
-            GoPro attached.
-            With UMI, we can collect real-world robot demonstrations anywhere for any manipulation skill,
-            without any robots.
-            So just walk out into the wild with UMI, and start collecting data!
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- <video autoplay muted loop playsinline width="100%">
-  <source src="./static/videos/umi-grid-small.mp4" type="video/mp4">
-</video> -->
 
 <div
   style="
@@ -316,6 +267,88 @@
   </video>
 </div>
 
+<!-- <section class="section" id="video">
+  <div class="container is-max-desktop">
+    <h2 class="title is-1 has-text-centered is-size-4-mobile">Technical Summary Video</h2>
+    <iframe width="100%" style="aspect-ratio: 16 / 9;" src="
+      https://www.youtube.com/embed/4Bp0q3xHTxE?si=ocAPm8KVAz-RZK59" title="UMI on Legs Technical Summary Video"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</section> -->
+
+<section class="section is-medium" id="extremcontrol">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <h2 class="title is-1 has-text-centered is-size-4-mobile">Whole-body Control without Whole-body Retargeting</h2>
+        <div class="content">
+          <p>
+            Robots are the reason why it's been hard to collect a lot of robot data.
+            They are expensive 💸, tricky to control for dexterous tasks 🎾, and can punch a hole in the wall (or
+            itself) if you're not
+            careful ☠️.
+            What if we could collect robot data without robots?
+          </p>
+        </div>
+
+        <div class="content">
+          <p>
+            <a href="https://umi-gripper.github.io/">UMI</a> is a handheld gripper with a
+            GoPro attached.
+            With UMI, we can collect real-world robot demonstrations anywhere for any manipulation skill,
+            without any robots.
+            So just walk out into the wild with UMI, and start collecting data!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="extremcontrol-extremity-fullbleed">
+    <video class="extremcontrol-extremity-video" autoplay muted loop playsinline>
+      <source src="./static/videos/extremity.mp4" type="video/mp4">
+    </video>
+  </div>
+  
+</section>
+
+<section class="section is-small" id="feedforward">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <h2 class="title is-1 has-text-centered is-size-4-mobile">Go Beyond Position Control</h2>
+        <div class="content">
+          <p>
+            Robots are the reason why it's been hard to collect a lot of robot data.
+            They are expensive 💸, tricky to control for dexterous tasks 🎾, and can punch a hole in the wall (or
+            itself) if you're not
+            careful ☠️.
+            What if we could collect robot data without robots?
+          </p>
+        </div>
+
+        <div class="content">
+          <p>
+            <a href="https://umi-gripper.github.io/">UMI</a> is a handheld gripper with a
+            GoPro attached.
+            With UMI, we can collect real-world robot demonstrations anywhere for any manipulation skill,
+            without any robots.
+            So just walk out into the wild with UMI, and start collecting data!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+<!-- <video autoplay muted loop playsinline width="100%">
+  <source src="./static/videos/umi-grid-small.mp4" type="video/mp4">
+</video> -->
 
 <!-- 
   <section class="section is-small" id="umi">
@@ -347,25 +380,7 @@
     </div>
   </section> -->
 
-<section class="section is-large" id="overview">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column has-text-justified is-four-fifths  is-hidden-mobile">
-        <h2 class="subtitle">
-          Training on UMI demonstrations gives a policy that outputs gripper movements from image inputs.
-          But how should the dog's legs move to track those gripper movements? 🤔
-        </h2>
-      </div>
-      <div class="column has-text-justified is-four-fifths is-hidden-tablet">
-        <p>
-          Training on UMI demonstrations gives a policy that outputs gripper movements from image inputs.
-          But how should the dog's legs move to track those gripper movements? 🤔
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- 
 <section class="section is-small has-background-black has-text-light" id="task-tracking">
   <div class="container is-max-desktop">
 
@@ -394,10 +409,10 @@
 
 <video autoplay muted loop playsinline height="100%">
   <source src="./static/videos/sim-small.mp4" type="video/mp4">
-</video>
+</video> -->
 
 
-<section class="section is-small" id="latency">
+<section class="section is-medium" id="latency">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
