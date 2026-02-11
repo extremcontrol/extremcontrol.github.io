@@ -72,6 +72,8 @@
   <script src="./static/js/index.js"></script>
 </head>
 
+<body>
+
 <section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
   <div class="hero-video" style="height: 100%; width: 177.77777778vh; min-width: 100%;min-height: 56.25vw;">
     <video playsinline autoplay muted loop>
@@ -320,7 +322,7 @@
     <div class="columns is-centered">
       <div class="column is-four-fifths">
 
-        <h2 class="title is-1 has-text-centered is-size-4-mobile">Go Beyond Position Control</h2>
+        <h2 class="title is-1 has-text-centered is-size-4-mobile">Go Beyond Position Control and Embrace Velocity Feedforward</h2>
         <div class="content">
           <p>
             Robots are the reason why it's been hard to collect a lot of robot data.
@@ -340,10 +342,159 @@
             So just walk out into the wild with UMI, and start collecting data!
           </p>
         </div>
+
+        <div class="phase-demo">
+          <canvas id="phase-demo-canvas" aria-label="Phase difference demo"></canvas>
+          <div class="phase-demo-controls">
+            <label for="phase-demo-eta">η</label>
+            <input id="phase-demo-eta" type="range" min="0" max="0.90" step="0.01" value="0" />
+            <div id="phase-demo-val" class="phase-demo-val">0.00</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  
+
+  <script>
+    (() => {
+      const canvas = document.getElementById("phase-demo-canvas");
+      const slider = document.getElementById("phase-demo-eta");
+      const val = document.getElementById("phase-demo-val");
+      if (!canvas || !slider || !val) return;
+
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      // default slider value (in case HTML was edited elsewhere)
+      if (!slider.value) slider.value = "0";
+
+      function draw(eta) {
+        // Guard against out-of-range values (e.g., manual edits)
+        eta = Math.max(0, Math.min(0.90, eta));
+        val.textContent = eta.toFixed(2);
+
+        const w = canvas.clientWidth;
+        const h = canvas.clientHeight;
+        const margin = 50;
+
+        ctx.clearRect(0, 0, w, h);
+        ctx.font = "14px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace";
+        ctx.textBaseline = "alphabetic";
+
+        const originY = h / 2;
+        const tMax = 4; // seconds shown on x-axis
+        const omega = Math.PI; // 1 Hz
+        const scaleX = (w - 2 * margin) / tMax;
+        const scaleY = (h - 2 * margin) / 2;
+
+        // axes
+        ctx.strokeStyle = "#d4d4d8";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        // x-axis
+        ctx.moveTo(margin, originY);
+        ctx.lineTo(w - margin, originY);
+        // y-axis
+        ctx.moveTo(margin, margin);
+        ctx.lineTo(margin, h - margin);
+        ctx.stroke();
+
+        // x-axis ticks: 0, 1, 2, 3, 4 (seconds)
+        ctx.save();
+        ctx.strokeStyle = "#d4d4d8";
+        ctx.fillStyle = "#374151";
+        ctx.lineWidth = 1;
+        ctx.textAlign = "center";
+        ctx.textBaseline = "top";
+        const maxTick = Math.min(4, Math.floor(tMax));
+        for (let i = 1; i <= maxTick; i++) {
+          const x = margin + i * scaleX;
+          ctx.beginPath();
+          ctx.moveTo(x, originY);
+          ctx.lineTo(x, originY + 12);
+          ctx.stroke();
+          ctx.fillText(String(i), x, originY + 16);
+        }
+        ctx.restore();
+
+        const delay = (1 - eta) / 5;
+        const purple = "#a040ff";
+        const orange = "#ffa040";
+
+        function drawSin(color, phaseShift, clampBeforeDelay = false) {
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+
+          for (let t = 0; t <= tMax; t += 0.01) {
+            const screenX = margin + t * scaleX;
+            let y = Math.sin(omega * t + phaseShift) * (1 - 0.5 * Math.abs(phaseShift) / omega);
+            // If this is the "Actual" curve with a time delay, clamp the leading segment to 0.
+            // phaseShift is in radians, omega is in rad/s => delaySeconds = |phaseShift| / omega.
+            if (clampBeforeDelay) {
+              const delayRatio = Math.abs(phaseShift) / omega / 0.2;
+              const delayShift = Math.abs(phaseShift) / omega
+              if (t < 2 * delayShift) y = y * (t / (2 * delayShift)) + 1.5 * t * ((2 * delayShift - t) / (2 * delayShift));
+            }
+            const screenY = originY - y * scaleY;
+            if (t === 0) ctx.moveTo(screenX, screenY);
+            else ctx.lineTo(screenX, screenY);
+          }
+
+          ctx.stroke();
+        }
+
+        drawSin(purple, 0);
+        drawSin(orange, -delay * omega, true);
+
+        ctx.fillStyle = "#111827";
+        ctx.fillText(`control delay = ${delay.toFixed(3) * 1000} ms`, margin, 24);
+
+        // legend
+        const lx = w - margin - 80;
+        const ly = margin + 10;
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = purple;
+        ctx.beginPath();
+        ctx.moveTo(lx, ly);
+        ctx.lineTo(lx + 24, ly);
+        ctx.stroke();
+        ctx.fillStyle = "#111827";
+        ctx.fillText("Target", lx + 32, ly + 5);
+
+        ctx.strokeStyle = orange;
+        ctx.beginPath();
+        ctx.moveTo(lx, ly + 18);
+        ctx.lineTo(lx + 24, ly + 18);
+        ctx.stroke();
+        ctx.fillStyle = "#111827";
+        ctx.fillText("Actual", lx + 32, ly + 23);
+
+        // axis labels
+        ctx.fillStyle = "#374151";
+        ctx.fillText("time (s)", w - margin - 65, originY - 10);
+        ctx.save();
+        ctx.translate(38, originY + 70);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText("DoF position (rad)", 0, 0);
+        ctx.restore();
+      }
+
+      function resize() {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+        canvas.height = Math.max(1, Math.floor(rect.height * dpr));
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        draw(parseFloat(slider.value));
+      }
+
+      slider.addEventListener("input", () => draw(parseFloat(slider.value)));
+      window.addEventListener("resize", resize);
+      resize();
+    })();
+  </script>
+
 </section>
 
 <!-- <video autoplay muted loop playsinline width="100%">
