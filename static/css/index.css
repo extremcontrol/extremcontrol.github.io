@@ -135,31 +135,6 @@ body {
   margin: 0;
 }
 
-.extremcontrol-extremity-fullbleed {
-  /* Full-bleed (edge-to-edge) inside a padded Bulma .section */
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-
-  /* Spacing from the text above */
-  margin-top: 2rem;
-}
-
-@media (max-width: 768px) {
-  .extremcontrol-extremity-fullbleed {
-    margin-top: 1.25rem;
-  }
-}
-
-.extremcontrol-extremity-video {
-  width: 100%;
-  height: auto;
-  display: block; /* removes inline-gap below video */
-}
-
 .phase-demo {
   margin-top: 1.25rem;
 }

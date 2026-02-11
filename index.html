@@ -269,17 +269,6 @@
   </video>
 </div>
 
-<!-- <section class="section" id="video">
-  <div class="container is-max-desktop">
-    <h2 class="title is-1 has-text-centered is-size-4-mobile">Technical Summary Video</h2>
-    <iframe width="100%" style="aspect-ratio: 16 / 9;" src="
-      https://www.youtube.com/embed/4Bp0q3xHTxE?si=ocAPm8KVAz-RZK59" title="UMI on Legs Technical Summary Video"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  </div>
-</section> -->
-
 <section class="section is-medium" id="extremcontrol">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -304,17 +293,14 @@
             without any robots.
             So just walk out into the wild with UMI, and start collecting data!
           </p>
-        </div>
+        </div> 
+        <video autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/extremity.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </div>
 
-  <div class="extremcontrol-extremity-fullbleed">
-    <video class="extremcontrol-extremity-video" autoplay muted loop playsinline>
-      <source src="./static/videos/extremity.mp4" type="video/mp4">
-    </video>
-  </div>
-  
 </section>
 
 <section class="section is-small" id="feedforward">
@@ -497,77 +483,12 @@
 
 </section>
 
-<!-- <video autoplay muted loop playsinline width="100%">
-  <source src="./static/videos/umi-grid-small.mp4" type="video/mp4">
-</video> -->
-
-<!-- 
-  <section class="section is-small" id="umi">
-    <div class="container is-max-desktop">
-
-      <h2 class="title is-1">Robot Data without Robots</h2>
-      <div class="content has-text-justified">
-        <p>
-          Robots are the reason why it's been hard to collect a lot of robot data.
-          They are expensive 💸, tricky to control for dexterous tasks 🎾, and can punch a hole in the wall (or
-          itself) if you're not
-          careful ☠️.
-          What if we could collect robot data without robots?
-        </p>
-      </div>
-
-      <video autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/umi-website.mp4" type="video/mp4">
-      </video>
-      <div class="content has-text-justified">
-        <p>
-          <a href="https://umi-gripper.github.io/">UMI</a> is a handheld gripper with a
-          GoPro attached.
-          With UMI, we can collect real-world robot demonstrations anywhere for any manipulation skill,
-          without any robots.
-        </p>
-      </div>
-
-    </div>
-  </section> -->
-
-<!-- 
-<section class="section is-small has-background-black has-text-light" id="task-tracking">
-  <div class="container is-max-desktop">
-
-    <h2 class="title is-1 has-text-white  is-size-4-mobile">Task Tracking without Simulating Tasks</h2>
-    <div class="content has-text-justified">
-      <p>
-        The promise of simulation engines is that of infinite data.
-        However, hidden in the terms and conditions that no one reads is the painful process of acquiring assets,
-        defining dense rewards,
-        rendering diverse
-        scenes, not to mention the sim-to-real gap 🙃.
-        All these problems are side-stepped or well-studied if we only use simulation to learn
-        whole-body
-        controllers.
-      </p>
-    </div>
-
-    <div class="content has-text-justified">
-      <p>
-        In a massively parallelized simulation, our robot learns through trial-and-error how to track UMI gripper
-        movements with stability and precision.
-      </p>
-    </div>
-  </div>
-</section>
-
-<video autoplay muted loop playsinline height="100%">
-  <source src="./static/videos/sim-small.mp4" type="video/mp4">
-</video> -->
-
 
 <section class="section is-medium" id="latency">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-2 has-text-centered is-size-4-mobile">Evolving from Human to Cobra-fast</h2>
+        <h2 class="title is-1 has-text-centered is-size-4-mobile">Evolving from Human to Cobra</h2>
         <div class="content">
           <p>
             On a quiet afternoon that felt slightly longer than it needed to be, the room filled with a soft, almost mechanical hum, as if the walls themselves were thinking. A cup of coffee sat untouched on the desk, slowly cooling while light from the window drifted across scattered notes and half-finished sketches. Somewhere outside, a bus passed, its sound briefly folding into the background noise of the city before disappearing again. The mind wandered easily in moments like this, hopping from unfinished plans to vague future ideas, then back to the present with no clear reason. Time seemed elastic, stretching and compressing depending on what the eyes focused on. A small crack in the paint became fascinating, then suddenly irrelevant. Thoughts layered over one another, not chaotic but loosely organized, like books stacked without labels.
@@ -591,70 +512,11 @@
 </section>
 
 
-<section class="section is-small" id="wbc">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths is-centered">
-        <h2 class="title is-3 has-text-centered is-size-5-mobile">What makes a Whole-body Controller
-          "Manipulation-Centric"?
-        </h2>
-
-
-        <div class="content has-text-justified">
-          <p>
-            Manipulation policies typically predict gripper movements in a fixed world frame, and assumes that the robot
-            track those movements with <b>stability ⚖️</b> and <b>precision 🎯</b>.
-            This is exactly what we set out to learn with our manipulation-centric whole-body controller.
-          </p>
-
-        </div>
-
-
-        <video autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/stable-tracking-small.mp4" type="video/mp4">
-        </video>
-
-        <div class="content has-text-justified" id="stable-tracking">
-          <p>
-            <b>Stability ⚖️</b>
-            Our controller tracks gripper movements in the world frame, instead of the body frame like <a
-              href="#wbc-prior-works">most prior
-              works</a>.
-            This means if you push the robot's body, its arm will move in the opposite direction to compensate, as seen
-            above.
-            Now that's what I call a 6 DoF <a href="https://github.com/chvmp/chicken_head">chicken head</a> 🐔!
-          </p>
-        </div>
-
-
-
-
-        <video autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/wbc-precision-small.mp4" type="video/mp4">
-        </video>
-        <div class="content has-text-justified" id="precise-tracking">
-          <p>
-            <b>Precision 🎯</b>
-            We give our controller a trajectory of gripper targets into the future, which allows it to anticipate future
-            gripper movements and reach all targets precisely.
-            For instance, in tossing a tennisball, the robot can brace its body for a high-velocity toss, planting its
-            front legs into the ground to supply enough tossing force.
-            Meanwhile, in pushing a heavy kettlebell, the robot can mobilize all its legs, knowing that it will have to
-            continue pushing forwards in the seconds to come.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
 <section class="section is-small" id="hardware">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-1 has-text-centered is-size-4-mobile">Meet Espresso and Oat Milk!</h2>
+        <h2 class="title is-1 has-text-centered is-size-4-mobile">Everything is Open-Sourced</h2>
         <div class="content">
           <p>
             Following our lab's <a href="https://real.stanford.edu/lab.html#robot-grid">caffinated drinks naming
@@ -685,37 +547,6 @@
     </div>
   </div>
 </section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="box pt-6 pb-6">
-      <div class="columns is-max-desktop is-centered ">
-        <div class="column is-four-fifths is-centered">
-          <h2 class="title is-2 has-text-centered is-size-5-mobile">Try out UMI on Legs!</h2>
-          <video autoplay muted loop playsinline width="100%">
-            <!-- <source src="./static/videos/cup-in-the-wild-small.mp4" type="video/mp4"> -->
-            <source src="./static/videos/failures-small.mp4" type="video/mp4">
-          </video>
-          <div class="content">
-            Quadruped manipulation has lots of moving parts, and any small bug can lead to a big mess 🤕
-            We've spent a lot of time figuring out the networking, operating systems, and hardware.
-            We've broken 3 quadruped legs, fried 1 Jetson, and ripped one pair of pants, so you don't have to 👖
-          </div>
-          <div class="content">
-          </div>
-          <div class="has-text-centered">
-            <a href="https://github.com/real-stanford/umi-on-legs">
-              <button class="button is-primary">Download Code</button>
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 
 
 <section class="section is-small">
@@ -842,120 +673,6 @@
     </p>
   </div>
 </section>
-
-
-
-<section class="section is-small" id="qa">
-  <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered ">
-      <div class="column is-four-fifths">
-        <h2 class="title is-4 has-text-centered is-size-5-mobile">Questions & Answers</h2>
-
-        <div class="block">
-          <h3 class="title is-6">
-            What can't this framework do?
-          </h3>
-          <p>
-            There is only a one-way communication from the manipulation visuo-motor policy to the whole-body
-            controller,
-            via an end-effector trajectory interface. This has two main drawbacks:<br><br>
-            <b>(1) Guarantee Reachability</b>.
-            Sometimes the manipulation policy would ask the controller to move to target poses it can't track, like
-            ones
-            that are too high or rotate the gripper by too much.
-            Ideally, the controller could communicate to the manipulation policy what the
-            hardware is capable of as well.
-            <br><br>
-            <b>(2) Track Multiple End-effectors</b>.
-            Ideally, our robots would involve their entire body in manipulation tasks, not just its gripper.
-            Towards involving the robot's feet, body, and arms in manipulation as well, the real-world data collection
-            platform,
-            manipulation-controller interface, and the whole-body controller formulation has some work to do.
-          </p>
-        </div>
-
-        <div class="block">
-          <h3 class="title is-6">
-            I want to build a foundation policy for robotics.
-            What can UMI on Legs teach me about how to go about it?
-          </h3>
-          <p>
-            Tossing was flashy, but the in-the-wild cup rearrangement task (shown below) changed my perspective on what
-            a foundation policy for robotics should look like.
-            <video autoplay muted loop playsinline width="100%">
-              <source src="./static/videos/cup-in-the-wild-small.mp4" type="video/mp4">
-            </video>
-            We were able to just plug-and-play UMI's publicly released policy onto our robot dog (seen above in 1x
-            speed)!
-            With an expressive embodiment-agnostic interface in place, I'm optimistic about a world where people can
-            separately develop ever more general
-            visuo-motor policies and ever more robust WBCs, knowing that they can be plugged-and-played together in the
-            end.
-
-          </p>
-        </div>
-
-
-        <div class="block">
-          <h3 class="title is-6">
-            Can learning to track end-effector trajectories <i>really</i> result in kettlebell pushing?
-          </h3>
-          <p>
-            Yes, and no 🙃 Let me explain.<br><br>
-            Yes, because the kettlebell does get pushed to its target zone in our experiments, which technically
-            counts
-            as a success.
-            No, because the robot's behavior was not very elegant, despite the hardware being physically capable of
-            much
-            smoother, stronger pushes.
-            We've included mass, center of mass, and other joint domain randomization during training, but additionally
-            including force-torque perturbations at the end-effector during WBC
-            training could address take us a step closer to more robust pushing behaviors.
-          </p>
-        </div>
-
-
-        <div id="visualization-qa" class="block">
-          <h3 class="title is-6">What simulator do you use? Why does it look so realistic?</h3>
-          <p>
-            In this project, I use the <a href="https://developer.nvidia.com/isaac-gym">IsaacGym simulator</a> for
-            physics, but like many of my prior works, I use <a href="https://www.blender.org/">Blender</a> for
-            rendering (e.g., <a href="https://huy-ha.github.io/scalingup/">Scaling Up</a>, <a
-              href="https://flingbot.cs.columbia.edu/">FlingBot</a>).
-          </p>
-          <br>
-          <p>
-            Also, as in my prior works, I've published instructions for importing simulations into Blender.
-            If you're using IsaacGym, you can refer to this <a
-              href="https://github.com/real-stanford/umi-on-legs">project's codebase</a>.
-            If you're using PyBullet, you can use <a href="https://github.com/huy-ha/pybullet-blender-recorder">this
-              plugin</a> I developed for my <a href="https://github.com/real-stanford/decentralized-multiarm">multi-arm
-              motion planning project</a>.
-            If you're using MuJoCo, you can refer to the visualization instructions on my <a
-              href="https://github.com/real-stanford/scalingup/blob/master/docs/visualization.md">Scaling Up</a>'s
-            codebase.
-          </p>
-        </div>
-
-
-
-        <div class="block" id="wbc-prior-works">
-          <h3 class="title is-6">
-            Isn't this just <a href="https://manipulation-locomotion.github.io/">DeepWBC</a> or <a
-              href="https://wholebody-b1.github.io/">Visual Whole-Body Control</a>?
-          </h3>
-          <p>
-            These whole-body controllers are not manipulation-centric - they do not track end-effector trajectories in
-            task-frame.
-            Instead, they track instantaneous end-effector targets in body-frame, and depend on the quadruped's base
-            command.
-            This means their controllers can't be used to deploy existing table-top visuo-motor manipulation policies.
-          </p>
-        </div>
-      </div>
-</section>
-
 
 
 <footer class="footer">
