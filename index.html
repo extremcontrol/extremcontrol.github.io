@@ -1,15 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-    content="ExtremControl: Low-Latency Humanoid Teleoperation with Direct Extremity Control">
-  <meta name="keywords" content="Low-Latency, Humanoid, Teleoperation">
+  <meta name="description" content="ExtremControl is a humanoid whole-body control framework achieving end-to-end teleoperation latency as low as 50ms by directly controlling robot extremities.">
+  <meta name="keywords" content="humanoid teleoperation, whole-body control, low-latency, extremity control, robotics, Unitree G1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>
-    ExtremControl: Low-Latency Humanoid Teleoperation with Direct Extremity Control
-  </title>
+  <meta name="robots" content="index, follow">
+  <title>ExtremControl: Low-Latency Humanoid Teleoperation with Direct Extremity Control</title>
+
+  <link rel="canonical" href="https://extremcontrol.github.io/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://extremcontrol.github.io/">
+  <meta property="og:title" content="ExtremControl: Low-Latency Humanoid Teleoperation with Direct Extremity Control">
+  <meta property="og:description" content="A humanoid whole-body control framework achieving end-to-end teleoperation latency as low as 50ms by directly controlling robot extremities.">
+  <meta property="og:image" content="https://extremcontrol.github.io/static/images/reaction.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ExtremControl: Low-Latency Humanoid Teleoperation with Direct Extremity Control">
+  <meta name="twitter:description" content="A humanoid whole-body control framework achieving end-to-end teleoperation latency as low as 50ms by directly controlling robot extremities.">
+  <meta name="twitter:image" content="https://extremcontrol.github.io/static/images/reaction.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "ExtremControl: Low-Latency Humanoid Teleoperation with Direct Extremity Control",
+    "name": "ExtremControl: Low-Latency Humanoid Teleoperation with Direct Extremity Control",
+    "description": "A humanoid whole-body control framework achieving end-to-end teleoperation latency as low as 50ms by directly controlling robot extremities instead of relying on whole-body retargeting.",
+    "url": "https://extremcontrol.github.io/",
+    "sameAs": "https://arxiv.org/abs/2602.11321",
+    "datePublished": "2026",
+    "keywords": "humanoid teleoperation, whole-body control, low-latency, extremity control, robotics",
+    "author": [
+      {"@type": "Person", "name": "Ziyan Xiong", "url": "https://ziyanx02.github.io/"},
+      {"@type": "Person", "name": "Lixing Fang", "url": "https://owenowl.github.io/"},
+      {"@type": "Person", "name": "Junyun Huang", "url": "https://adrianhuang2002.github.io/"},
+      {"@type": "Person", "name": "Kashu Yamazaki", "url": "https://kashu7100.github.io/"},
+      {"@type": "Person", "name": "Hao Zhang", "url": "https://hcr.cs.umass.edu/people/hzhang/"},
+      {"@type": "Person", "name": "Chuang Gan", "url": "https://people.csail.mit.edu/ganchuang/"}
+    ],
+    "publisher": {"@type": "Organization", "name": "University of Massachusetts Amherst"},
+    "isPartOf": {"@type": "Periodical", "name": "arXiv", "url": "https://arxiv.org/"}
+  }
+  </script>
 
   <link rel="icon" href="./static/images/favicon.ico" type="image/vnd.microsoft.icon">
 
@@ -33,13 +67,13 @@
 <section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
   <div class="hero-video" style="height: 100%; width: 177.77777778vh; min-width: 100%;min-height: 56.25vw;">
     <video playsinline autoplay muted loop>
-      <source src=" ./static/videos/teaser.mp4" type="video/mp4">
+      <source src="./static/videos/teaser.mp4" type="video/mp4">
     </video>
   </div>
   <div class="hero-video is-hidden-tablet is-inline-block-mobile"
     style="height: 154.28571428vw; width: 100%; min-width:64.81481481vh;min-height:100%;">
     <video playsinline autoplay muted loop>
-      <source src=" ./static/videos/web_teaser_mobile.mp4" type="video/mp4">
+      <source src="./static/videos/web_teaser_mobile.mp4" type="video/mp4">
     </video>
   </div>
   <div class="overlay"></div>
@@ -85,9 +119,9 @@
       <h1 class="title is-1 publication-title is-size-1-mobile hero-main-title" data-fit-text data-fit-min-px="18">
         ExtremControl
       </h1>
-      <h1 class="subtitle is-1 publication-title is-size-4-mobile hero-subtitle" data-fit-text-mobile data-fit-min-px="14" style="white-space: normal;">
+      <h2 class="subtitle is-1 publication-title is-size-4-mobile hero-subtitle" data-fit-text-mobile data-fit-min-px="14" style="white-space: normal;">
         Low-Latency Humanoid Teleoperation with <br class="is-hidden-mobile">  Direct Extremity Control
-      </h1>
+      </h2>
       <!-- <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 2rem; opacity: 80%;">
         In Submission
       </h1> -->
@@ -143,19 +177,19 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths has-text-justified is-hidden-mobile">
-        <h2 class="subtitle ">
+        <p class="subtitle ">
           <strong>ExtremControl</strong> is a humanoid whole-body control framework aiming to minimize the latency when responding to high-level control interface.
           Instead of relying on whole-body retargeting, we directly control the robot's extremities.
           To further reduce the latency, we incorporate a velocity feedforward term into PD controller.
-        </h2>
-        <h2 class="subtitle ">
+        </p>
+        <p class="subtitle ">
           Built on top of ExtremControl, we develop a humanoid teleoperation system that achieves end-to-end latency as low as <strong>50ms</strong>.
           Although our experiments are conducted with MoCap and VR systems, the framework is interface-agnostic—you can seamlessly integrate your own high-level control input.
-        </h2>
-        <h2 class="subtitle ">
+        </p>
+        <p class="subtitle ">
           The codebase is fully open-sourced and built on <strong>Genesis</strong>, enabling additional features beyond what is shown here. Click the
           <a href="https://github.com/UMass-Embodied-AGI/Genesis-Humanoid">link</a> to explore more.
-        </h2>
+        </p>
       </div>
 
       <div class="column is-four-fifths is-hidden-tablet has-text-justified-mobile">
@@ -264,7 +298,7 @@
         <h2 class="title is-1 has-text-centered is-size-4-mobile">Go Beyond Position Control and Embrace Velocity Feedforward</h2>
         <div class="content">
           <p>
-            Since the very begining of parallel simulation for locomotion, position-only PD control seems to be the only option.
+            Since the very beginning of parallel simulation for locomotion, position-only PD control seems to be the only option.
             However, due to the damping term, the target joint position must lead the actual position by a certain angle to maintain the 
             joint velocity, deviating from the definition of "target" joint position. To address this issue,
             we introduce a velocity feedforward term where the target velocity is computed from the difference betweenlast two target joint positions.

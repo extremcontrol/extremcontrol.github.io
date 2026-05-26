@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://extremcontrol.github.io/sitemap.xml
